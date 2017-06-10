@@ -1,0 +1,141 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    
+    <LinearLayout
+            android:id="@+id/ll1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="5">
+
+        <EditText
+                android:id="@+id/etLocationEntry"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"/>
+
+        <Button
+                android:id="@+id/btSearch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Go"/>
+
+    </LinearLayout>
+    
+    <fragment xmlns:map="http://schemas.android.com/apk/res-auto"
+          xmlns:tools="http://schemas.android.com/tools"
+          android:id="@+id/map"
+          android:name="com.google.android.gms.maps.SupportMapFragment"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_below="@+id/ll1"
+          tools:context="ryanwendling.tenniscourtfinder.MapsActivity"/>
+
+    <Button
+        android:id="@+id/btAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Marks"
+        android:padding="3dp"
+        android:layout_alignBottom="@+id/btClearPath"
+        android:layout_alignParentEnd="true"/>
+
+    <Button
+        android:id="@+id/btClear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@id/btAdd"
+        android:padding="3dp"
+        android:text="Clear All"/>
+
+    <Button
+        android:id="@+id/btClearPath"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear Paths"
+        android:layout_alignParentBottom="true"
+        android:padding="3dp"
+        android:layout_toStartOf="@+id/btClear"/>
+
+    <ZoomControls
+        android:id="@+id/zcZoom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btAdd"
+        android:padding="3dp"
+        android:layout_alignParentRight="true">
+    </ZoomControls>
+
+    <TextView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="select location:"
+        android:layout_below="@+id/ll1"
+        android:textColor="#848484"
+        android:textSize="20sp"
+        android:gravity="left"
+        android:padding="8dip"
+        android:id="@+id/textView2"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerCourts"
+
+        android:gravity="center"
+        android:padding="8dip"
+        android:layout_below="@+id/ll1"
+        android:layout_toRightOf="@id/textView2"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Info"
+        android:id="@+id/infoBt"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/tball"
+        android:layout_alignBottom="@+id/zcZoom"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/infoBt"
+        android:layout_alignTop="@+id/zcZoom"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="save marks to DB"
+        android:id="@+id/saveDBBt"
+        android:padding="3dp"
+        android:layout_above="@+id/zcZoom"
+        android:layout_alignEnd="@+id/zcZoom"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="show DB"
+        android:id="@+id/showDBBt"
+        android:padding="3dp"
+        android:layout_above="@+id/saveDBBt"
+        android:onClick="lookupMarkers"
+        android:layout_alignParentEnd="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="clear DB"
+        android:id="@+id/clearDBBt"
+        android:padding="3dp"
+        android:onClick="callDeleteAll"
+        android:layout_above="@+id/showDBBt"
+        android:layout_alignEnd="@+id/showDBBt"/>
+
+</RelativeLayout>
